@@ -1,0 +1,5 @@
+
+# Streamlit의 기본 'dark' 테마
+[theme]
+base = "dark"
+
