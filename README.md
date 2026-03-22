@@ -93,8 +93,7 @@ streamlit run team3pro.py
 | [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드 |
 | [박동제](https://github.com/dongjebag59-dev) | ppt 발표자료 준비, 코드 실행 체크 |
 
-[발표자료 참고](assets/프로젝트 3조 발표.pptx)
-
+[발표자료 참고](assets/프로젝트_3조_발표.pptx)
 <br>
 
 ---
