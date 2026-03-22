@@ -9,7 +9,6 @@
 ![메인 화면 전체](assets/real_main.png)
 
 ---
-<br>
 
 ## 📌 프로젝트 개요
 
@@ -18,9 +17,9 @@
 - **개발 기간**: 2025.12.11 ~ 2025.12.16
 - **팀 구성**: 4명
 - **배포 환경**: Streamlit Community Cloud
+<br>
 
 ---
-<br>
 
 ## 🛠 기술 스택
 
@@ -32,9 +31,9 @@
 | 시각화 | matplotlib, plotly |
 | 배포 | Streamlit Community Cloud |
 | 버전 관리 | GitHub Actions |
+<br>
 
 ---
-<br>
 
 ## 🔸< 주요 기능 >
 <br>
@@ -66,7 +65,6 @@
 <br>
 
 ---
-<br>
 
 ## ▪️ 로컬 실행 방법
 
@@ -81,9 +79,9 @@ pip install -r requirements.txt
 # 3. 앱 실행
 streamlit run team3pro.py
 ```
+<br>
 
 ---
-<br>
 
 ## ▪️ 팀원 및 역할
 
@@ -94,9 +92,9 @@ streamlit run team3pro.py
 | [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시  |
 | [이영진](https://github.com/ilove0628yj-w) | 사이드바 종목, 국내 증시 뉴스, 볼린저밴드 |
 | [박동제](https://github.com/dongjebag59-dev) | ppt 발표자료 준비, 코드 실행 체크 |
+<br>
 
 ---
-<br>
 
 ## ▪️ 프로젝트 구조
 
@@ -113,9 +111,9 @@ Lion_1_Streamlit/
 ├── requirements.txt      # 의존성 목록
 └── README.md
 ```
+<br>
 
 ---
-<br>
 
 ## 🔹 앞으로 추가할 내용 및 회고
 
@@ -125,6 +123,7 @@ Lion_1_Streamlit/
 - streamlit에서 더 제공해주는 기능들이 있는지 살펴보고 싶음
 - ui도 사용자들에게 편리한지: 왼쪽 사이드바는 접근성이 좋으나, 하단 탭에 담아놓은 내용들은 더 보기 좋은 ui로 바꾸고 싶음
 - 제대로 된 서비스로 디벨롭된다면 새 이름을 붙여주고 싶음
+<br>
 
 ---
 
@@ -139,6 +138,6 @@ Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 �
 ### 2. 라이브러리 자동 업데이트
 `.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함.
 
-
+<br>
 ---
 
