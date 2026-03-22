@@ -1,0 +1,51 @@
+# 동작 흐름:
+# GitHub Actions (매주 월요일)
+#   → pip install --upgrade
+#   → requirements.txt 갱신
+#   → 자동 커밋 & 푸시
+#   → Streamlit Cloud 감지
+#   → 앱 재빌드
+
+
+name: Update requirements.txt
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 자동 실행
+  workflow_dispatch:       # 수동 실행 버튼도 추가
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install pip-tools
+        run: pip install pip-tools
+
+      - name: Upgrade all packages
+        run: |
+          pip install --upgrade \
+            mplfinance \
+            finance-datareader \
+            streamlit \
+            pandas \
+            matplotlib \
+            plotly \
+            yfinance
+          pip freeze > requirements.txt
+
+      - name: Commit updated requirements
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add requirements.txt
+          git diff --staged --quiet || git commit -m "chore: auto-update requirements.txt"
+          git push
+
+          
