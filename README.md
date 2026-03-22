@@ -65,23 +65,6 @@
 
 ---
 
-## ▪️ 로컬 실행 방법
-
-```bash
-# 1. 레포지토리 클론
-git clone https://github.com/battlegroundcallofduty/Lion_1_Streamlit.git
-cd Lion_1_Streamlit
-
-# 2. 패키지 설치
-pip install -r requirements.txt
-
-# 3. 앱 실행
-streamlit run team3pro.py
-```
-<br>
-
----
-
 ## ▪️ 팀원 및 역할
 
 | 이름 | 역할 |
@@ -115,18 +98,6 @@ Lion_1_Streamlit/
 
 ---
 
-## 🔹 앞으로 추가할 내용 및 회고
-
-- 첫 프로젝트라 어떻게 더 효율적으로 결과를 도출할지, 에러 방지 등에 대한 고민이 부족했음 => 코드 수정 예정. 
-- 서비스 주요 사용자들을 확실히 정할 예정:
-  주식 초보자들을 겨냥하여 기본적인 설명을 더 추가할건지, 주식 투자자들을 위해 좀 더 전문적인 정보를 넣을지 고민중
-- streamlit에서 더 제공해주는 기능들이 있는지 살펴보고 싶음
-- ui도 사용자들에게 편리한지: 왼쪽 사이드바는 접근성이 좋으나, 하단 탭에 담아놓은 내용들은 더 보기 좋은 ui로 바꾸고 싶음
-- 제대로 된 서비스로 디벨롭된다면 새 이름을 붙여주고 싶음
-<br>
-
----
-
 ## + 유지보수 참고사항
 
 ### 1. Streamlit 앱 절전 모드
@@ -136,6 +107,35 @@ Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 �
 - HTTP(s) 모니터 추가 → 앱 URL 입력 → Interval: 5분 설정
 
 ### 2. 라이브러리 자동 업데이트
-`.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함. + github actions 사용중인데, 무료 플랜 월 사용량에 변동사항이 있다면 업데이트 자동화 변경 예정
+`.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함. <br> + github actions 사용중인데, 무료 플랜 월 사용량에 변동사항이 있다면 업데이트 자동화 변경 예정
 
+<br>
+
+---
+
+## ▪️ 로컬 실행 방법
+
+```bash
+# 1. 레포지토리 클론
+git clone https://github.com/battlegroundcallofduty/Lion_1_Streamlit.git
+cd Lion_1_Streamlit
+
+# 2. 패키지 설치
+pip install -r requirements.txt
+
+# 3. 앱 실행
+streamlit run team3pro.py
+```
+<br>
+
+---
+
+## 🔹 앞으로 추가할 내용 및 회고
+
+- 첫 프로젝트라 어떻게 더 효율적으로 결과를 도출할지, 에러 방지 등에 대한 고민이 부족했음 => 코드 수정 예정. 
+- 서비스 주요 사용자들을 확실히 정할 예정:
+  주식 초보자들을 겨냥하여 기본적인 설명을 더 추가할건지, 주식 투자자들을 위해 좀 더 전문적인 정보를 넣을지 고민중
+- streamlit에서 더 제공해주는 기능들이 있는지 살펴보고 싶음
+- ui도 사용자들에게 편리한지: 왼쪽 사이드바는 접근성이 좋으나, 하단 탭에 담아놓은 내용들은 더 보기 좋은 ui로 바꾸고 싶음
+- 제대로 된 서비스로 디벨롭된다면 새 이름을 붙여주고 싶음
 <br>
