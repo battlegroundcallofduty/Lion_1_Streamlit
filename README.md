@@ -4,7 +4,6 @@
 > Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
 <br>
 ![메인 화면](assets/main_page.png)
-<br>
 ![차트 하단 메뉴탭](assets/menu_tabs.png)
 
 ---
