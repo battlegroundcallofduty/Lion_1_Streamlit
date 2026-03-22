@@ -92,6 +92,7 @@ streamlit run team3pro.py
 | [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시  |
 | [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드 |
 | [박동제](https://github.com/dongjebag59-dev) | ppt 발표자료 준비, 코드 실행 체크 |
+[발표자료 참고](assets./프로젝트 3조 발표.pptx)
 <br>
 
 ---
@@ -105,8 +106,8 @@ Lion_1_Streamlit/
 ├── .github/
 │   └── workflows/        
 │       └── update-requirements.yml   # 라이브러리 자동 업데이트
-├── assets/               # readme 첨부 이미지
-│   └── png ...
+├── assets/               # readme 첨부 파일들
+│   └── png, pptx ...
 ├── team3pro.py           # 메인 앱
 ├── requirements.txt      # 의존성 목록
 └── README.md
