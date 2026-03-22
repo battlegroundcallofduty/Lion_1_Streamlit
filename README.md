@@ -3,7 +3,7 @@
 
 > 멋사 부캠 1차 팀 프로젝트
 > 
-> **Streamlit 기반 주식 데이터 시각화 웹 애플리케이션**
+> ### Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
 <br>
 
 ![메인 화면 전체](assets/real_main.png)
@@ -137,6 +137,6 @@ Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 �
 - HTTP(s) 모니터 추가 → 앱 URL 입력 → Interval: 5분 설정
 
 ### 2. 라이브러리 자동 업데이트
-`.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함.
+`.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함. + github actions 사용중인데, 무료 플랜 월 사용량에 변동사항이 있다면 자동 업데이트 변경 가능성 있음 🥹
 
 <br>
