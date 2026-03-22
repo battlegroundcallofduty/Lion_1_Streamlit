@@ -37,6 +37,7 @@ jobs:
             mplfinance \
             finance-datareader \
             streamlit \
+            streamlit-lottie \
             pandas \
             matplotlib \
             plotly \
