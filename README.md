@@ -1,7 +1,9 @@
 # < 주식 차트 분석 서비스 — 3조 >
 <br>
 
-> 멋사 부캠 1차 팀 프로젝트 | Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
+> 멋사 부캠 1차 팀 프로젝트
+> Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
+<br>
 
 ![메인 화면](assets/main_page.png)
 ![차트 하단 메뉴탭](assets/menu_tabs.png)
