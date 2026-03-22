@@ -14,7 +14,7 @@
 
 - **개발 기간**: 2025.12.11 ~ 2025.12.16
 - **팀 구성**: 4명
-- **배포 환경**: Streamlit Community Cloud
+- **배포 환경**: Streamlit Community Cloud <br>
 [배포 링크(바로 보기)](https://lion1project3team.streamlit.app/)
 <br>
 
