@@ -90,7 +90,7 @@ streamlit run team3pro.py
 | 공통 담당 | 메인 주식 차트 |
 | [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, 로티 |
 | [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시  |
-| [이영진](https://github.com/ilove0628yj-w) | 사이드바 종목, 국내 증시 뉴스, 볼린저밴드 |
+| [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드 |
 | [박동제](https://github.com/dongjebag59-dev) | ppt 발표자료 준비, 코드 실행 체크 |
 <br>
 
