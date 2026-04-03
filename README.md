@@ -1,8 +1,6 @@
-# 주식 차트 분석 서비스 by 상부삼조
-<br>
+# 주식 차트 분석 서비스 — 상부삼조
 
 > Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
-<br>
 
 ![메인 화면 전체](assets/real_main.png)
 
@@ -10,106 +8,155 @@
 
 ## 📌 프로젝트 개요
 
-> yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, 차트 하단에 탭을 사용하여 투자에 필요한 5가지 지표들을 제공하는 웹 서비스입니다.
+yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, 차트 하단의 탭 구조를 통해 투자에 필요한 5가지 정보(요약 / 통계 / 뉴스 / 거래량 / 투자지표)를 제공하는 웹 서비스입니다.
 
-- **개발 기간**: 2025.12.11 ~ 2025.12.16
-- **팀 구성**: 4명
-- **배포 환경**: Streamlit Community Cloud <br>
-[배포 링크(바로 보기)](https://lion1project3team.streamlit.app/)
-<br>
+| 항목 | 내용 |
+|------|------|
+| 개발 기간 | 2025.12.11 ~ 2025.12.16 (6일) |
+| 팀 구성 | 4인 팀 프로젝트 |
+| 배포 환경 | Streamlit Community Cloud |
+| 배포 주소 | [https://lion1project3team.streamlit.app/](https://lion1project3team.streamlit.app/) |
 
 ---
 
 ## 🛠 기술 스택
 
-| 분류 | 기술 |
-|------|------|
-| Language | Python |
-| Framework | Streamlit |
-| 데이터 | mplfinance, finance-datareader, pandas |
-| 시각화 | matplotlib, plotly |
-| 배포 | Streamlit Community Cloud |
-| 라이브러리 업데이트 자동화 | GitHub Actions |
-<br>
+### Language & Framework
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+
+### Data & Visualization
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white)
+
+### Libraries
+![yfinance](https://img.shields.io/badge/yfinance-0D47A1?style=for-the-badge&logo=yahoo&logoColor=white)
+![mplfinance](https://img.shields.io/badge/mplfinance-11557C?style=for-the-badge&logo=python&logoColor=white)
+![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup4-4B8B3B?style=for-the-badge&logo=python&logoColor=white)
+![finance--datareader](https://img.shields.io/badge/finance--datareader-1A73E8?style=for-the-badge&logo=python&logoColor=white)
+
+### DevOps & Deployment
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![Streamlit Cloud](https://img.shields.io/badge/Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+
+---
+
+## 🏗 프로젝트 구조
+
+```mermaid
+graph TD
+    A[Lion_1_Streamlit] --> B[team3pro.py<br/>메인 앱 진입점]
+    A --> C[.streamlit/]
+    A --> D[.github/]
+    A --> E[assets/]
+    A --> F[requirements.txt]
+
+    C --> C1[config.toml<br/>Streamlit 테마 설정]
+
+    D --> D1[workflows/]
+    D1 --> D2[update-requirements.yml<br/>라이브러리 자동 업데이트<br/>매주 월요일 실행]
+
+    E --> E1[PNG 이미지<br/>README 첨부용]
+    E --> E2[발표자료.pptx]
+
+    B --> G[사이드바<br/>종목 / 날짜 / 차트 유형 선택]
+    B --> H[메인 차트<br/>mplfinance 캔들차트<br/>볼린저밴드]
+    B --> I[탭 구조]
+
+    I --> T1[탭 1: 요약<br/>종목 코드, 종가, 수익률]
+    I --> T2[탭 2: 기간별 통계분석<br/>가격 분포, 현재 주가 위치]
+    I --> T3[탭 3: 뉴스<br/>국내 증시 / 구글 뉴스 / 해외 뉴스]
+    I --> T4[탭 4: 거래량<br/>거래량 그래프 / 통계]
+    I --> T5[탭 5: 투자지표<br/>수익률, RSI, 변동성]
+
+    style T3 fill:#d4edda,stroke:#28a745
+    style T4 fill:#d4edda,stroke:#28a745
+    style T5 fill:#d4edda,stroke:#28a745
+```
+
+> 초록색 탭(탭 3 일부, 탭 4, 탭 5)은 박지영 담당 구현 영역
 
 ---
 
 ## 🔸 주요 기능
-<br>
 
 ![메인 화면](assets/main_page.png)
-- [ ] **왼쪽 사이드바:** 종목, 시작일, 종료일, 차트 유형 및 스타일, 볼린저밴드 여부 선택 후 '확인' 클릭
-- [ ] **오른쪽 화면:** 사이드바에서 선택한 종목의 주식 차트 시각화, 하단의 탭 5개로 관련 정보 확인 가능
-<br>
+
+- **왼쪽 사이드바** — 종목, 시작일, 종료일, 차트 유형 및 스타일, 볼린저밴드 여부 선택 후 '확인' 클릭
+- **오른쪽 화면** — 사이드바에서 선택한 종목의 주식 차트 시각화 + 하단 5개 탭으로 상세 정보 확인
+
+---
+
+### 탭 1: 요약
 
 ![탭1: 요약](assets/tab1_summary.png)
-- [ ] **탭 1: 요약** - 종목명, 종목 코드, 최신 종가, 기간 내 최고가, 기간 내 최저가, 선택 기간 수익률
-<br>
+
+종목명, 종목 코드, 최신 종가, 기간 내 최고가/최저가, 선택 기간 수익률을 한눈에 확인할 수 있습니다.
+
+---
+
+### 탭 2: 기간별 통계분석
 
 ![탭2: 통계](assets/tab2_statistics.png)
-- [ ] **탭 2: 기간별 통계분석** - 현재 주가 위치, 기간 내 가격 분포(최고가, 최저가, 금액 차이, 종가)
-<br>
+
+현재 주가의 기간 내 위치(백분위), 가격 분포(최고/최저/종가/금액 차이)를 시각화합니다.
+
+---
+
+### 탭 3: 뉴스
 
 ![탭3: 국내뉴스](assets/tab3_domestic.png)
 ![탭3: 국외뉴스](assets/tab3_foreign.png)
-- [ ] **탭 3: 뉴스** - 국내 증시 뉴스, 관련 구글 최신 뉴스, 월스트리트 저널, 블룸버그, 로이터
-<br>
+
+- **국내 증시 뉴스** — finance-datareader 기반 국내 뉴스 크롤링
+- **구글 뉴스** ⭐ — Google RSS 파싱을 통해 선택 종목 관련 최신 뉴스 실시간 제공 *(박지영 담당)*
+- **해외 뉴스** ⭐ — Wall Street Journal, Bloomberg, Reuters RSS 파싱 *(박지영 담당)*
+
+---
+
+### 탭 4: 거래량
 
 ![탭4: 거래량](assets/tab4_volume.png)
-- [ ] **탭 4: 거래량** - 거래량 그래프, 평균 거래량, 최대 거래량, 최대 거래량 날짜, 거래량 수준
-<br>
+
+⭐ *박지영 담당 구현*
+
+Plotly 인터랙티브 그래프로 거래량 추이를 시각화하고, 평균 거래량 / 최대 거래량 / 최대 거래량 날짜 / 거래량 수준을 함께 제공합니다.
+
+---
+
+### 탭 5: 투자지표
 
 ![탭5: 투자](assets/tab5_investment.png)
-- [ ] **탭 5: 투자 지표** - 기간 수익률, 연환산 변동성, RSI, 최근 수익률
-<br>
+
+⭐ *박지영 담당 구현*
+
+선택 기간 수익률, 연환산 변동성, RSI(상대강도지수), 최근 수익률을 산출하여 투자 참고 지표로 제공합니다.
 
 ---
 
-## ▪️ 팀원 및 역할
+## 👩‍💻 나의 구현 상세 (박지영)
+
+| 기능 | 구현 내용 | 사용 기술 |
+|------|----------|-----------|
+| 구글 뉴스 | 선택 종목명을 쿼리로 Google News RSS 파싱 → 최신 뉴스 카드 출력 | `requests`, `BeautifulSoup`, `feedparser` |
+| 국외 뉴스 | WSJ · Bloomberg · Reuters RSS를 파싱하여 탭 내 섹션 분류 출력 | `requests`, `BeautifulSoup` |
+| 거래량 탭 | Plotly 막대 그래프 + 요약 통계(평균·최대·수준) | `plotly`, `pandas` |
+| 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 및 시각화 | `pandas`, `numpy`, `plotly` |
+| 캐시 | `@st.cache_data` 적용으로 데이터 중복 요청 방지 및 렌더링 성능 개선 | `streamlit` cache |
+
+---
+
+## 👥 팀원 및 역할
 
 | 이름 | 역할 |
-|------|-------------|
-| 공통 담당 | 메인 주식 차트 / 사이드바 수정 |
-| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, 로티 |
-| [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시  |
+|------|------|
+| 공통 | 메인 주식 차트, 사이드바 공통 수정 |
+| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, Lottie 애니메이션 |
+| [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시 |
 | [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드, 범례 |
-| [박동제](https://github.com/dongjebag59-dev) | ppt 발표자료 준비, 코드 실행 체크 |
-
-<br>
-
----
-
-## ▪️ 프로젝트 구조
-
-```
-Lion_1_Streamlit/
-├── .streamlit/
-│   └── config.toml       # Streamlit 설정
-├── .github/
-│   └── workflows/        
-│       └── update-requirements.yml   # 라이브러리 자동 업데이트
-├── assets/               # readme 첨부 파일들
-│   └── png, pptx ...
-├── team3pro.py           # 메인 앱
-├── requirements.txt      # 의존성 목록
-└── README.md
-```
-<br>
-
----
-
-## + 유지보수 참고사항
-
-### 1. Streamlit 앱 절전 모드
-Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 잠듦. 접속하면 "앱 깨우기" 버튼이 표시되며, 1~2분 내로 재시작됨.
-**항상 켜둬야 하는 시기**에는 아래 방법으로 상시 유지할 예정:
-- [UptimeRobot](https://uptimerobot.com) 무료 계정 생성
-- HTTP(s) 모니터 추가 → 앱 URL 입력 → Interval: 5분 설정
-
-### 2. 라이브러리 자동 업데이트
-`.github/workflows/update-requirements.yml`에 의해 매주 월요일 자동으로 패키지 최신 버전을 확인하고 `requirements.txt`를 갱신함. Streamlit Cloud가 변경을 감지해 앱을 자동 재배포함. <br> + github actions 사용중인데, 무료 플랜 월 사용량에 변동사항이 있다면 업데이트 자동화 변경 예정
-
-<br>
+| [박동제](https://github.com/dongjebag59-dev) | PPT 발표자료, 코드 실행 검증 |
 
 ---
 
@@ -126,16 +173,28 @@ pip install -r requirements.txt
 # 3. 앱 실행
 streamlit run team3pro.py
 ```
-<br>
 
 ---
 
-## 🔹 앞으로 추가할 내용 및 회고
+## ⚙️ 운영 참고사항
 
-- 첫 프로젝트라 어떻게 더 효율적으로 결과를 도출할지, 에러 방지 등에 대한 고민이 부족했음 => 코드 수정 예정. 
-- 서비스 주요 사용자들을 확실히 정할 예정:
-  주식 초보자들을 겨냥하여 기본적인 설명을 더 추가할건지, 주식 투자자들을 위해 좀 더 전문적인 정보를 넣을지 고민중
-- streamlit에서 더 제공해주는 기능들이 있는지 살펴보고 싶음
-- ui도 사용자들에게 편리한지: 왼쪽 사이드바는 접근성이 좋으나, 하단 탭에 담아놓은 내용들은 더 보기 좋은 ui로 바꾸고 싶음
-- 제대로 된 서비스로 디벨롭된다면 새 이름을 붙여주고 싶음
-<br>
+### Streamlit 앱 절전 모드
+
+Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 잠깁니다. 접속하면 "앱 깨우기" 버튼이 표시되며 1~2분 내 재시작됩니다.
+
+상시 유지가 필요한 경우 [UptimeRobot](https://uptimerobot.com) 무료 계정으로 5분 간격 HTTP 모니터를 설정하여 해결 가능합니다.
+
+### 라이브러리 자동 업데이트
+
+`.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
+
+> GitHub Actions 무료 플랜 사용량에 따라 자동화 방식 변경 가능
+
+---
+
+## 🔹 회고 및 개선 방향
+
+- 첫 팀 프로젝트로 에러 방지, 코드 효율화에 대한 고민이 부족했던 부분 → 리팩토링 예정
+- 타겟 사용자 명확화 필요: 주식 초보자 대상 설명 강화 vs 투자자 대상 전문 정보 확대
+- Streamlit 추가 컴포넌트(st.columns, st.metric 등) 활용한 UI 개선 검토
+- 하단 탭 UI를 보다 직관적인 레이아웃으로 개편 예정
