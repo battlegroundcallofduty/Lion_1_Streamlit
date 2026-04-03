@@ -11,12 +11,19 @@
 yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, <br>
 차트 하단의 탭 구조를 통해 투자에 필요한 5가지 정보(요약 / 통계 / 뉴스 / 거래량 / 투자지표)를 제공하는 웹 서비스입니다.
 
-| 항목 | 내용 |
+- 개발 기간: 2025.12.11 ~ 2025.12.16
+- 구성: 4인 팀 프로젝트
+
+| 이름 | 역할 |
 |------|------|
-| 개발 기간 | 2025.12.11 ~ 2025.12.16 (6일) |
-| 팀 구성 | 4인 팀 프로젝트 |
-| 배포 환경 | Streamlit Community Cloud |
-| 배포 주소 | [https://lion1project3team.streamlit.app/](https://lion1project3team.streamlit.app/) |
+| 공통 | 메인 주식 차트, 사이드바 공통 수정 |
+| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, Lottie 애니메이션 |
+| [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시 |
+| [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드, 범례 |
+| [박동제](https://github.com/dongjebag59-dev) | PPT 발표자료, 코드 실행 검증 |
+
+- 배포 환경: Streamlit Community Cloud
+- 배포 주소: [https://lion1project3team.streamlit.app/](https://lion1project3team.streamlit.app/)
 
 ---
 
@@ -143,18 +150,6 @@ graph TD
 | 거래량 탭 | Plotly 막대 그래프 + 요약 통계(평균·최대·수준) | `plotly`, `pandas` |
 | 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 및 시각화 | `pandas`, `numpy`, `plotly` |
 | 캐시 | `@st.cache_data` 적용으로 데이터 중복 요청 방지 및 렌더링 성능 개선 | `streamlit` cache |
-
----
-
-## 👥 팀원 및 역할
-
-| 이름 | 역할 |
-|------|------|
-| 공통 | 메인 주식 차트, 사이드바 공통 수정 |
-| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, Lottie 애니메이션 |
-| [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시 |
-| [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드, 범례 |
-| [박동제](https://github.com/dongjebag59-dev) | PPT 발표자료, 코드 실행 검증 |
 
 ---
 
