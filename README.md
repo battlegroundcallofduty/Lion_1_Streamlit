@@ -8,7 +8,8 @@
 
 ## 📌 프로젝트 개요
 
-yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, 차트 하단의 탭 구조를 통해 투자에 필요한 5가지 정보(요약 / 통계 / 뉴스 / 거래량 / 투자지표)를 제공하는 웹 서비스입니다.
+yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, <br>
+차트 하단의 탭 구조를 통해 투자에 필요한 5가지 정보(요약 / 통계 / 뉴스 / 거래량 / 투자지표)를 제공하는 웹 서비스입니다.
 
 | 항목 | 내용 |
 |------|------|
@@ -120,7 +121,8 @@ graph TD
 
 ![탭4: 거래량](assets/tab4_volume.png)
 
-⭐ Plotly 인터랙티브 그래프로 거래량 추이를 시각화하고, 평균 거래량 / 최대 거래량 / 최대 거래량 날짜 / 거래량 수준을 함께 제공합니다.
+⭐ Plotly 인터랙티브 그래프로 거래량 추이를 시각화하고, <br>
+평균 거래량 / 최대 거래량 / 최대 거래량 날짜 / 거래량 수준을 함께 제공합니다.
 
 ---
 
@@ -182,7 +184,8 @@ Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 �
 
 ### 라이브러리 자동 업데이트
 
-`.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
+`.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. <br>
+Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
 
 > GitHub Actions 무료 플랜 사용량에 따라 자동화 방식 변경 가능
 
