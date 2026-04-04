@@ -145,11 +145,25 @@ graph TD
 
 | 기능 | 구현 내용 | 사용 기술 |
 |------|----------|-----------|
-| 구글 뉴스 | 선택 종목명을 쿼리로 Google News RSS 파싱 → 최신 뉴스 카드 출력 | `requests`, `BeautifulSoup`, `feedparser` |
-| 국외 뉴스 | WSJ · Bloomberg · Reuters RSS를 파싱하여 탭 내 섹션 분류 출력 | `requests`, `BeautifulSoup` |
-| 거래량 탭 | Plotly 막대 그래프 + 요약 통계(평균·최대·수준) | `plotly`, `pandas` |
-| 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 및 시각화 | `pandas`, `numpy`, `plotly` |
+| 구글 뉴스 | 선택 종목명을 쿼리로 Google News RSS 파싱 → 최신 뉴스 카드 출력 | `requests`, `BeautifulSoup` |
+| 국외 뉴스 | WSJ · Bloomberg · Reuters 링크를 탭 내 섹션으로 분류 제공 | `streamlit` |
+| 거래량 탭 | mplfinance 막대 그래프 + 요약 통계(평균·최대·수준) | `mplfinance`, `pandas` |
+| 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 및 시각화 | `pandas`, `numpy` |
 | 캐시 | `@st.cache_data` 적용으로 데이터 중복 요청 방지 및 렌더링 성능 개선 | `streamlit` cache |
+
+### 투자지표 탭 — 계산 방식
+
+**RSI (상대강도지수, 14일)**
+
+`close.diff()`로 일별 등락을 구분한 뒤, `rolling(window=14).mean()`으로 14일 평균 이익(avg_gain)과 평균 손실(avg_loss)을 산출합니다. 이후 `RSI = 100 - 100 / (1 + avg_gain / avg_loss)` 공식을 적용하여 70 이상 과매수 / 30 이하 과매도 구간을 판별합니다.
+
+**연환산 변동성**
+
+`pct_change()`로 일별 수익률을 구한 뒤 `.std() * √252`로 연환산합니다 (연간 거래일 252일 기준). 결과를 퍼센트로 변환해 투자 위험도를 직관적으로 표시합니다.
+
+### 캐시 전략 및 데이터 출처 대응
+
+yfinance · FinanceDataReader 기반 시세 데이터에는 `@st.cache_data`를 적용하여, **동일 종목·기간 재조회 시 API를 재호출하지 않고 캐시를 반환**합니다. 구글 뉴스 RSS에는 `@st.cache_data(ttl=1800)`을 적용해 **30분간 캐시를 유지**하므로 탭 재클릭 시 체감 로딩이 거의 없으며, 비공식 API의 Rate Limit 초과 위험도 함께 줄였습니다. yfinance는 Yahoo Finance의 비공식 API를 사용하므로 호출 빈도 최소화가 안정적 운영의 핵심이었으며, 캐시가 이를 직접적으로 해결합니다.
 
 ---
 
@@ -186,7 +200,43 @@ Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
 
 ---
 
-## 🔹 회고 및 개선 방향
+## 🔹 개발하며 배운 것들
+
+- **캐시 도입**: 팀원이 주식 데이터 로딩 중 페이지가 멈추는 현상을 발견했습니다. 원인을 파악해보니 Streamlit은 버튼 클릭 등 인터랙션마다 스크립트 전체를 재실행하는 구조라, 매번 yfinance API를 재호출하면서 발생한 문제였습니다. `@st.cache_data`를 적용해 동일 요청은 캐시에서 반환하도록 수정하여 해결했습니다. 팀원의 문제 제기 → 원인 분석 → 직접 해결까지 이어진 과정이 첫 팀 프로젝트에서 가장 인상적인 경험이었습니다.
+
+- **RSS 활용**: 뉴스 기능 구현 중 RSS 피드 개념을 처음 접했고, Google News · Wall Street Journal의 RSS URL을 직접 파싱해 실시간 뉴스를 뽑아내는 기능을 즉석에서 구현했습니다. 개념을 발견하고 바로 적용해보는 과정이 신선한 경험이었습니다.
+
+```python
+@st.cache_data(ttl=1800)
+def get_google_news(stock_name, max_news=3):
+    query = stock_name.replace(" ", "+")
+    url = f"https://news.google.com/rss/search?q={query}+주식&hl=ko&gl=KR&ceid=KR:ko"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    res = requests.get(url, headers=headers)
+    res.raise_for_status()
+    soup = BeautifulSoup(res.text, "xml")
+    items = soup.find_all("item")[:max_news]
+
+    news_list = []
+    for item in items:
+        title = item.title.text
+        link = item.link.text
+        pub_date = item.pubDate.text
+
+        news_list.append({
+            "title": title,
+            "link": link,
+            "date": pub_date})
+    return news_list
+```
+
+**도메인 지식의 필요성**
+
+주식에 대한 사전 지식이 전혀 없는 상태에서 개발을 시작했습니다. RSI, 볼린저밴드, 연환산 변동성 같은 개념은 구현 과정에서 처음 접했고, 문서와 자료를 찾아가며 최대한 이해하려 노력했습니다. 수식을 코드로 옮기긴 했지만, 투자자 입장에서 이 수치가 실제로 어떤 의미인지는 아직 완전히 와닿지 않습니다. 도메인 지식 없이 기능을 구현해본 경험을 통해, 코드 이상으로 해당 분야를 이해하는 것의 중요성을 느꼈습니다.
+
+---
+
+## 🔹 추후 개선 사항
 
 - 첫 팀 프로젝트로 에러 방지, 코드 효율화에 대한 고민이 부족했던 부분 → 리팩토링 예정
 - 타겟 사용자 명확화 필요: 주식 초보자 대상 설명 강화 vs 투자자 대상 전문 정보 확대
