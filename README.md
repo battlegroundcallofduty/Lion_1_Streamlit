@@ -8,7 +8,7 @@
 
 ## 📌 프로젝트 개요
 
-yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, <br>
+FinanceDataReader, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고, <br>
 차트 하단의 탭 구조를 통해 투자에 필요한 5가지 정보(요약 / 통계 / 뉴스 / 거래량 / 투자지표)를 제공하는 웹 서비스입니다.
 
 - 개발 기간: 2025.12.11 - 2025.12.16
@@ -35,12 +35,9 @@ yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고
 
 ### Data & Visualization
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white)
 
 ### Libraries
-![yfinance](https://img.shields.io/badge/yfinance-0D47A1?style=for-the-badge&logo=yahoo&logoColor=white)
 ![mplfinance](https://img.shields.io/badge/mplfinance-11557C?style=for-the-badge&logo=python&logoColor=white)
 ![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup4-4B8B3B?style=for-the-badge&logo=python&logoColor=white)
 ![finance--datareader](https://img.shields.io/badge/finance--datareader-1A73E8?style=for-the-badge&logo=python&logoColor=white)
@@ -118,9 +115,9 @@ graph TD
 ![탭3: 국내뉴스](assets/tab3_domestic.png)
 ![탭3: 국외뉴스](assets/tab3_foreign.png)
 
-- **국내 증시 뉴스** — finance-datareader 기반 국내 뉴스 크롤링
+- **국내 증시 뉴스** — Naver Finance 종목 페이지 링크 제공
 - **구글 뉴스** ⭐ — Google RSS 파싱을 통해 선택 종목 관련 최신 뉴스 실시간 제공
-- **해외 뉴스** ⭐ — Wall Street Journal, Bloomberg, Reuters RSS 파싱
+- **해외 뉴스** ⭐ — Wall Street Journal, Bloomberg, Reuters 링크 제공
 
 ---
 
@@ -128,7 +125,7 @@ graph TD
 
 ![탭4: 거래량](assets/tab4_volume.png)
 
-⭐ Plotly 인터랙티브 그래프로 거래량 추이를 시각화하고, <br>
+⭐ mplfinance + st.pyplot 으로 거래량 추이를 시각화하고, <br>
 평균 거래량 / 최대 거래량 / 최대 거래량 날짜 / 거래량 수준을 함께 제공합니다.
 
 ---
@@ -148,7 +145,7 @@ graph TD
 | 구글 뉴스 | 선택 종목명을 쿼리로 Google News RSS 파싱 → 최신 뉴스 출력 | `requests`, `BeautifulSoup` |
 | 국외 뉴스 | WSJ · Bloomberg · Reuters 링크를 탭 내 섹션으로 분류 제공 | `streamlit` |
 | 거래량 탭 | mplfinance 막대 그래프 + 요약 통계(평균·최대·수준) | `mplfinance`, `pandas` |
-| 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 및 시각화 | `pandas`, `numpy` |
+| 투자지표 탭 | 수익률, 연환산 변동성, RSI(14일), 최근 수익률 계산 | `pandas` |
 | 캐시 | `@st.cache_data` 적용으로 데이터 중복 요청 방지 및 렌더링 성능 개선 | `streamlit` cache |
 
 ### 투자지표 탭 — 계산 방식
@@ -163,7 +160,7 @@ graph TD
 
 ### 캐시 전략 및 데이터 출처 대응
 
-yfinance · FinanceDataReader 기반 시세 데이터에는 `@st.cache_data`를 적용하여, **동일 종목·기간 재조회 시 API를 재호출하지 않고 캐시를 반환**합니다. 구글 뉴스 RSS에는 `@st.cache_data(ttl=1800)`을 적용해 **30분간 캐시를 유지**하므로 탭 재클릭 시 체감 로딩이 거의 없으며, 비공식 API의 Rate Limit 초과 위험도 함께 줄였습니다. yfinance는 Yahoo Finance의 비공식 API를 사용하므로 호출 빈도 최소화가 안정적 운영의 핵심이었으며, 캐시가 이를 직접적으로 해결합니다.
+FinanceDataReader 기반 시세 데이터에는 `@st.cache_data`를 적용하여, **동일 종목·기간 재조회 시 API를 재호출하지 않고 캐시를 반환**합니다. 구글 뉴스 RSS에는 `@st.cache_data(ttl=1800)`을 적용해 **30분간 캐시를 유지**하므로 탭 재클릭 시 체감 로딩이 거의 없으며, 비공식 API의 Rate Limit 초과 위험도 함께 줄였습니다. FinanceDataReader는 내부적으로 yfinance를 통해 Yahoo Finance 비공식 API에 접근하므로, 호출 빈도 최소화가 안정적 운영의 핵심이었으며, 캐시가 이를 직접적으로 해결했습니다.
 
 ---
 
@@ -202,7 +199,7 @@ Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
 
 ## 🔹 개발하며 배운 것들
 
-- **캐시 도입**: 팀원이 주식 데이터 로딩 중 페이지가 멈추는 현상을 발견했습니다. 원인을 파악해보니 Streamlit은 버튼 클릭 등 인터랙션마다 스크립트 전체를 재실행하는 구조라, 매번 yfinance API를 재호출하면서 발생한 문제였습니다. `@st.cache_data`를 적용해 동일 요청은 캐시에서 반환하도록 수정하여 해결했습니다. 팀원의 문제 제기 → 원인 분석 → 직접 해결까지 이어진 과정이 첫 팀 프로젝트에서 가장 인상적인 경험이었습니다.
+- **캐시 도입**: 팀원이 주식 데이터 로딩 중 페이지가 멈추는 현상을 발견했습니다. 원인을 파악해보니 Streamlit은 버튼 클릭 등 인터랙션마다 스크립트 전체를 재실행하는 구조라, 매번 FinanceDataReader API를 재호출하면서 발생한 문제였습니다. `@st.cache_data`를 적용해 동일 요청은 캐시에서 반환하도록 수정하여 해결했습니다. 팀원의 문제 제기 → 원인 분석 → 직접 해결까지 이어진 과정이 첫 팀 프로젝트에서 가장 인상적인 경험이었습니다.
 
 - **RSS 활용**: 뉴스 기능 구현 중 RSS 피드 개념을 처음 접했고, Google News의 RSS 피드를 파싱해 실시간 뉴스를 뽑아내는 기능을 구현했습니다. 개념을 발견하고 바로 적용해보는 과정이 신선한 경험이었습니다.
 
