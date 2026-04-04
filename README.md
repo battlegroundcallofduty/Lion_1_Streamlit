@@ -17,7 +17,7 @@ yfinance, mplfinance 등을 활용해 종목별 주가 차트를 시각화하고
 | 이름 | 역할 |
 |------|------|
 | 공통 | 메인 주식 차트, 사이드바 공통 수정 |
-| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, Lottie 애니메이션 |
+| [김유선](https://github.com/kimyuseon) | 사이드바, 요약 탭, 기간별 통계분석 탭, Lottie |
 | [박지영](https://github.com/battlegroundcallofduty) | 구글 뉴스, 국외 뉴스, 거래량 탭, 투자지표 탭, 캐시 |
 | [이영진](https://github.com/ilove0628yj-w) | 사이드바 마켓, 국내 증시 뉴스, 볼린저밴드, 범례 |
 | [박동제](https://github.com/dongjebag59-dev) | PPT 발표자료, 코드 실행 검증 |
