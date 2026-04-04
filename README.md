@@ -173,16 +173,17 @@ streamlit run team3pro.py
 
 ### Streamlit 앱 절전 모드
 
-Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 잠깁니다. 접속하면 "앱 깨우기" 버튼이 표시되며 1~2분 내 재시작됩니다.
+- Streamlit Community Cloud 무료 플랜은 일정 시간 미접속 시 앱이 잠깁니다. 접속하면 "앱 깨우기" 버튼이 표시되며 1~2분 내 재시작됩니다.
 
-상시 유지가 필요한 경우 [UptimeRobot](https://uptimerobot.com) 무료 계정으로 5분 간격 HTTP 모니터를 설정하여 해결 가능합니다.
+- 상시 유지가 필요한 경우 [UptimeRobot](https://uptimerobot.com) 무료 계정으로 5분 간격 HTTP 모니터를 설정하여 해결 가능합니다.
 
 ### 라이브러리 자동 업데이트
 
-`.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. <br>
-Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
+`yfinance`, `streamlit-lottie` 등 주요 라이브러리의 업데이트 주기가 잦아, 버전 불일치로 인한 배포 오류가 간헐적으로 발생했습니다. <br>
+이를 방지하기 위해 `.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 <br>
+`requirements.txt`를 갱신합니다. Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
 
-> GitHub Actions 무료 플랜 사용량에 따라 자동화 방식 변경 가능
+> GitHub Actions 무료 플랜 사용량에 따라 자동화 방식 변경 가능성 있음
 
 ---
 
