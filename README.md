@@ -50,36 +50,7 @@ FinanceDataReader, mplfinance 등을 활용해 종목별 주가 차트를 시각
 
 ## 🏗 프로젝트 구조
 
-```mermaid
-graph TD
-    A[Lion_1_Streamlit] --> B[team3pro.py<br/>메인 앱 진입점]
-    A --> C[.streamlit/]
-    A --> D[.github/]
-    A --> E[assets/]
-    A --> F[requirements.txt]
-
-    C --> C1[config.toml<br/>Streamlit 테마 설정]
-
-    D --> D1[workflows/]
-    D1 --> D2[update-requirements.yml<br/>라이브러리 자동 업데이트<br/>매주 월요일 실행]
-
-    E --> E1[PNG 이미지<br/>README 첨부용]
-    E --> E2[프로젝트_3조_발표.pptx]
-
-    B --> G[사이드바<br/>종목 / 날짜 / 차트 유형 선택]
-    B --> H[메인 차트<br/>mplfinance 캔들차트<br/>볼린저밴드]
-    B --> I[탭 구조]
-
-    I --> T1[탭 1: 요약<br/>종목 코드, 종가, 수익률]
-    I --> T2[탭 2: 기간별 통계분석<br/>가격 분포, 현재 주가 위치]
-    I --> T3[탭 3: 뉴스<br/>국내 증시 / 구글 뉴스 / 해외 뉴스]
-    I --> T4[탭 4: 거래량<br/>거래량 그래프 / 통계]
-    I --> T5[탭 5: 투자지표<br/>수익률, RSI, 변동성]
-
-    style T3 fill:#d4edda,stroke:#28a745
-    style T4 fill:#d4edda,stroke:#28a745
-    style T5 fill:#d4edda,stroke:#28a745
-```
+![구조](assets/mermaid_diagram.png)
 
 > 초록색 탭(탭 3 일부, 탭 4, 탭 5)은 담당 구현 영역
 
