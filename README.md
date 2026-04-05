@@ -64,7 +64,7 @@ graph TD
     D1 --> D2[update-requirements.yml<br/>라이브러리 자동 업데이트<br/>매주 월요일 실행]
 
     E --> E1[PNG 이미지<br/>README 첨부용]
-    E --> E2[발표자료.pptx]
+    E --> E2[프로젝트_3조_발표.pptx]
 
     B --> G[사이드바<br/>종목 / 날짜 / 차트 유형 선택]
     B --> H[메인 차트<br/>mplfinance 캔들차트<br/>볼린저밴드]

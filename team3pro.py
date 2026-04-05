@@ -270,7 +270,7 @@ with tab3: # 뉴스
     with tab2:
         st.subheader("국외 증시 뉴스")
         
-        st.markdown("#### :newspaper: :gray[The Wall Street Journel ]")
+        st.markdown("#### :newspaper: :gray[The Wall Street Journal ]")
         WSJ_url = f"https://www.wsj.com/market-data/quotes/KR/XKRX/{selected_code}?mod=searchresults_companyquotes"
         link_text = f" 월스트리트 저널에서 '{selected_name.split('(')[0]}' 검색결과 바로가기"
         st.markdown(f"[{link_text}]({WSJ_url})")
