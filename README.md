@@ -131,7 +131,7 @@ FinanceDataReader, mplfinance 등을 활용해 종목별 주가 차트를 시각
 
 ### 캐시 전략 및 데이터 출처 대응
 
-FinanceDataReader 기반 시세 데이터에는 `@st.cache_data`를 적용하여, **동일 종목·기간 재조회 시 API를 재호출하지 않고 캐시를 반환**합니다. 구글 뉴스 RSS에는 `@st.cache_data(ttl=1800)`을 적용해 **30분간 캐시를 유지**하므로 탭 재클릭 시 체감 로딩이 거의 없으며, 비공식 API의 Rate Limit 초과 위험도 함께 줄였습니다. FinanceDataReader는 내부적으로 yfinance를 통해 Yahoo Finance 비공식 API에 접근하므로, 호출 빈도 최소화가 안정적 운영의 핵심이었으며, 캐시가 이를 직접적으로 해결했습니다.
+FinanceDataReader 기반 시세 데이터에는 `@st.cache_data`를 적용하여, **동일 종목·기간 재조회 시 API를 재호출하지 않고 캐시를 반환**합니다. FinanceDataReader는 내부적으로 yfinance를 통해 Yahoo Finance 비공식 API에 접근하므로, 호출 빈도 최소화가 안정적 운영의 핵심이었으며, 캐시가 이를 직접적으로 해결했습니다. 반면 구글 뉴스 RSS에는 `@st.cache_data(ttl=1800)`을 적용해 **30분간 캐시를 유지** 했습니다. 탭 재클릭 시 체감 로딩이 거의 없으며, 뉴스 최신성과 요청 빈도 사이의 균형을 고려해 TTL을 30분으로 지정했습니다.
 
 ---
 
