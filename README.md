@@ -161,7 +161,7 @@ streamlit run team3pro.py
 
 - 상시 유지가 필요한 경우 [UptimeRobot](https://uptimerobot.com) 무료 계정으로 5분 간격 HTTP 모니터를 설정하여 해결 가능합니다.
 
-### 라이브러리 자동 업데이트
+### 라이브러리 자동 업데이트 (팀 프로젝트 종료 후 개인적으로 추가)
 
 `yfinance`, `streamlit-lottie` 등 주요 라이브러리의 업데이트 주기가 잦아, 버전 불일치로 인한 배포 오류가 간헐적으로 발생했습니다. 이를 방지하기 위해 `.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. <br>
 Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
