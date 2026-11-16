@@ -35,6 +35,7 @@ jobs:
         run: |
           pip install --upgrade \
             mplfinance \
+            six \
             finance-datareader \
             streamlit \
             streamlit-lottie \
