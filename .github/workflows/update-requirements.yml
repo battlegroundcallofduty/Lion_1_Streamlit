@@ -44,7 +44,11 @@ jobs:
             plotly \
             yfinance
           pip freeze > requirements.txt
-
+      - name: Smoke test (푸시하기 전에 import 임시 테스트)
+        run: |
+          python -m venv /tmp/check
+          /tmp/check/bin/pip install -r requirements.txt
+          /tmp/check/bin/python -c "import streamlit, FinanceDataReader, mplfinance, matplotlib.pyplot, streamlit_lottie, yfinance, bs4, requests"
       - name: Commit updated requirements
         run: |
           git config --global user.name "github-actions[bot]"
