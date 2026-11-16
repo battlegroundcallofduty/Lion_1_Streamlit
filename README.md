@@ -4,7 +4,7 @@
 > 가제: **주식경** (Stock-Lens)      
 > ㅡ Streamlit 기반 주식 데이터 시각화 웹 애플리케이션
 
-![메인 화면 전체](assets/real_main.png)
+![메인 화면 전체](assets/Animation_stockstream.gif)
 
 ---
 
@@ -85,8 +85,7 @@ FinanceDataReader, mplfinance 등을 활용해 종목별 주가 차트를 시각
 
 ### 탭 3: 뉴스
 
-![탭3: 국내뉴스](assets/tab3_domestic.png)
-![탭3: 국외뉴스](assets/tab3_foreign.png)
+![탭3: 국내/국외뉴스](assets/tab3_news.png)
 
 - **국내 증시 뉴스** — Naver Finance 종목 페이지 링크 제공
 - **구글 뉴스** ⭐ — Google RSS 파싱을 통해 선택 종목 관련 최신 뉴스 실시간 제공
@@ -162,12 +161,17 @@ streamlit run team3pro.py
 
 - 상시 유지가 필요한 경우 [UptimeRobot](https://uptimerobot.com) 무료 계정으로 5분 간격 HTTP 모니터를 설정하여 해결 가능합니다.
 
-### 라이브러리 자동 업데이트 (팀 프로젝트 종료 후 개인적으로 추가)
+### 라이브러리 자동 업데이트 (팀 프로젝트 종료 후 개인 유지보수로 추가)
 
 `yfinance`, `streamlit-lottie` 등 주요 라이브러리의 업데이트 주기가 잦아, 버전 불일치로 인한 배포 오류가 간헐적으로 발생했습니다. 이를 방지하기 위해 `.github/workflows/update-requirements.yml`에 의해 **매주 월요일** 자동으로 최신 패키지 버전을 확인하고 `requirements.txt`를 갱신합니다. <br>
 Streamlit Cloud가 변경을 감지하면 앱을 자동 재배포합니다.
 
-> GitHub Actions 무료 플랜 사용량에 따라 자동화 방식 변경 가능성 있음
+> [!NOTE]
+> 2026. 11. 16 자동 업데이트 워크플로우 추가 이후 처음으로 배포 사이트 에러 발생
+> 
+> **원인**: 로그에 'six' 라는 이름을 가진 모듈을 찾을 수 없다는 에러가 뜸. mplfinance가 내부적으로 six(파이썬 호환용 라이브러리)를 쓰면서도 의존성 목록에는 적어두지 않았고, 그동안 python-dateutil이 six를 함께 설치해줘서 문제가 드러나지 않았음. 자동 업데이트로 python-dateutil의 새 버전이 six를 더 이상 포함시키지 않아 에러가 발생함.    
+> **해결**: requirements.txt와 워크플로우 yml의 업그레이드 목록에 six를 직접 추가. 또한 requirements.txt를 commit/push하기 전에 새 환경에서 설치와 import가 되는지 확인하는 smoke test 단계를 워크플로우에 추가함.    
+> **결과**: 설치 및 import 단계에서 문제가 생기는 업데이트는 smoke test 단계에서 실패하여 requirements.txt에 반영되지 않고, 기존의 정상 버전이 유지됨. 워크플로우 실패시 이메일로 알림이 옴. (test 단계 추가 후 수동 실행으로 워크플로우 정상 작동 확인 완료)
 
 ---
 
