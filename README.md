@@ -85,7 +85,7 @@ FinanceDataReader, mplfinance 등을 활용해 종목별 주가 차트를 시각
 
 ### 탭 3: 뉴스
 
-![탭3: 국내/국외뉴스](assets/tab3_news.png)
+![탭3: 국내/국외뉴스](assets/tab3_news.jpg)
 
 - **국내 증시 뉴스** — Naver Finance 종목 페이지 링크 제공
 - **구글 뉴스** ⭐ — Google RSS 파싱을 통해 선택 종목 관련 최신 뉴스 실시간 제공
